@@ -1,0 +1,57 @@
+---
+import type { Certification } from '../lib/resume';
+
+interface Props {
+  certifications: Certification[];
+}
+
+const { certifications } = Astro.props;
+
+const issuerColors: Record<string, string> = {
+  'Databricks': 'bg-red-500/10 text-red-400 border-red-500/20',
+  'Snowflake': 'bg-sky-500/10 text-sky-400 border-sky-500/20',
+  'Amazon Web Services': 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+  'Credly': 'bg-orange-500/10 text-orange-400 border-orange-500/20',
+};
+---
+
+<section id="certifications">
+  <h2 class="section-title">Certifications</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {certifications.map((cert) => (
+      <a
+        href={cert.url || undefined}
+        target={cert.url ? '_blank' : undefined}
+        rel={cert.url ? 'noopener noreferrer' : undefined}
+        class:list={[
+          'card group',
+          cert.url && 'hover:border-[var(--color-accent)] cursor-pointer',
+          !cert.url && 'cursor-default',
+        ]}
+      >
+        <div class="flex items-start gap-3">
+          <div class="shrink-0 mt-0.5">
+            <div class:list={[
+              'w-8 h-8 rounded-lg border flex items-center justify-center text-xs font-bold',
+              issuerColors[cert.issuer] ?? 'bg-[var(--color-accent)]/10 text-[var(--color-accent)] border-[var(--color-accent)]/20',
+            ]}>
+              {cert.issuer.split(' ').map(w => w[0]).join('').slice(0, 2)}
+            </div>
+          </div>
+          <div class="min-w-0">
+            <h3 class="text-sm font-medium leading-tight group-hover:text-[var(--color-accent)] transition-colors">
+              {cert.name}
+            </h3>
+            <p class="text-xs text-[var(--color-text-muted)] mt-1">{cert.issuer}</p>
+          </div>
+          {cert.url && (
+            <svg class="w-4 h-4 shrink-0 text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+          )}
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

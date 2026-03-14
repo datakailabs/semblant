@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Education from '../components/Education.astro';
+import Languages from '../components/Languages.astro';
+import Footer from '../components/Footer.astro';
+import ExperienceTimeline from '../islands/ExperienceTimeline';
+import SkillsEcosystem from '../islands/SkillsEcosystem';
+import { loadResume } from '../lib/resume';
+
+const resume = loadResume();
+---
+
+<BaseLayout
+  title={`${resume.personal.name} — ${resume.personal.title}`}
+  description={resume.personal.bio}
+>
+  <div class="max-w-4xl mx-auto px-6">
+    <Header personal={resume.personal} />
+
+    <!-- Experience: unified timeline + expandable details -->
+    <section class="mb-12">
+      <h2 class="section-title">Experience</h2>
+      <div class="card">
+        <ExperienceTimeline client:load experience={resume.experience} />
+      </div>
+    </section>
+
+    <!-- Education + Languages side by side -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <Education education={resume.education} />
+      <Languages languages={resume.languages} />
+    </div>
+
+    <!-- Skills, Certifications & Projects: unified ecosystem graph -->
+    <section class="mb-12">
+      <h2 class="section-title">Skills, Certifications & Projects</h2>
+      <div class="card">
+        <SkillsEcosystem
+          client:load
+          skills={resume.skills}
+          certifications={resume.certifications}
+          projects={resume.projects}
+        />
+      </div>
+    </section>
+
+    <Footer lastUpdated={resume.meta.last_updated} />
+  </div>
+</BaseLayout>

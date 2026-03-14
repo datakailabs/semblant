@@ -1,0 +1,27 @@
+{
+  "name": "semblant-web",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.0",
+    "@astrojs/react": "^3.6.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "d3": "^7.9.0",
+    "tailwindcss": "^3.4.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/d3": "^7.4.0",
+    "@types/js-yaml": "^4.0.0"
+  }
+}

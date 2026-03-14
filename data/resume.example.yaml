@@ -1,0 +1,111 @@
+# Semblant Resume Schema
+# Copy this file to resume.yaml and customize with your own data.
+# All fields are optional unless noted. The schema is self-documenting.
+
+personal:
+  name: "Jane Doe"
+  title: "Senior Software Engineer"
+  bio: "Building tools that make developers' lives easier. Passionate about open source, distributed systems, and developer experience."
+  location: "San Francisco, CA"
+  location_visibility: public  # public | private
+  website: "https://janedoe.dev"
+  links:
+    - platform: github
+      url: "https://github.com/janedoe"
+    - platform: linkedin
+      url: "https://www.linkedin.com/in/janedoe/"
+  contact:
+    - type: email
+      value: "jane@example.com"
+      visibility: private  # public | private
+
+experience:
+  - company: "Acme Corp"
+    url: "https://acme.example.com"  # optional — hyperlinked in PDF
+    role: "Senior Software Engineer"
+    start: "2023-01"
+    end: null  # null = current role
+    location: "Remote"
+    description: "Leading backend architecture for the core platform team."
+    highlights:
+      - "Redesigned the API gateway, reducing p99 latency by 40%"
+      - "Mentored 3 junior engineers through promotion cycles"
+    technologies:
+      - Go
+      - PostgreSQL
+      - Kubernetes
+      - gRPC
+
+  - company: "Startup Inc"
+    url: "https://startup.example.com"
+    role: "Software Engineer"
+    start: "2020-06"
+    end: "2022-12"
+    location: "New York, NY"
+    description: "Full-stack engineer on the payments team."
+    highlights:
+      - "Built the billing pipeline processing $2M/month in transactions"
+      - "Migrated monolith to microservices architecture"
+    technologies:
+      - Python
+      - React
+      - AWS
+      - Docker
+
+education:
+  - institution: "University of California, Berkeley"
+    degree: "B.S. Computer Science"
+    start: "2016"
+    end: "2020"
+    location: "Berkeley, CA"
+    notes: ""
+
+skills:
+  - category: "Languages"
+    items:
+      - name: "Go"
+        level: 85  # 0-100
+      - name: "Python"
+        level: 80
+      - name: "TypeScript"
+        level: 70
+
+  - category: "Infrastructure"
+    items:
+      - name: "Kubernetes"
+        level: 75
+      - name: "AWS"
+        level: 80
+      - name: "Docker"
+        level: 85
+
+certifications:
+  - name: "AWS Certified Solutions Architect"
+    issuer: "Amazon Web Services"
+    date: "2023-06"
+    credential_id: ""
+    url: "https://www.credly.com/badges/example"
+    source: "manual"
+
+languages:
+  - name: "English"
+    proficiency: "native"
+  - name: "Spanish"
+    proficiency: "conversational"
+
+projects:
+  - name: "OpenWidget"
+    description: "Open-source dashboard widget framework for real-time data visualization"
+    url: "https://github.com/janedoe/openwidget"
+    technologies: ["TypeScript", "D3.js", "WebSockets"]
+    status: "active"
+
+  - name: "DevLog"
+    description: "CLI tool for structured engineering journal entries"
+    url: ""
+    technologies: ["Go"]
+    status: "active"
+
+meta:
+  last_updated: "2026-01-15"
+  version: "0.1.0"

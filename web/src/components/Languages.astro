@@ -1,0 +1,42 @@
+---
+import type { Language } from '../lib/resume';
+
+interface Props {
+  languages: Language[];
+}
+
+const { languages } = Astro.props;
+
+const proficiencyWidth: Record<string, string> = {
+  native: 'w-full',
+  fluent: 'w-[85%]',
+  professional: 'w-[70%]',
+  conversational: 'w-[50%]',
+  basic: 'w-[30%]',
+};
+---
+
+<section id="languages">
+  <h2 class="section-title">Languages</h2>
+
+  <div class="card">
+    <div class="space-y-4">
+      {languages.map((lang) => (
+        <div>
+          <div class="flex justify-between mb-1.5">
+            <span class="text-sm font-medium">{lang.name}</span>
+            <span class="text-xs text-[var(--color-text-muted)] capitalize">{lang.proficiency}</span>
+          </div>
+          <div class="h-1.5 bg-[var(--color-border)] rounded-full overflow-hidden">
+            <div
+              class:list={[
+                'h-full bg-[var(--color-accent)] rounded-full transition-all duration-700',
+                proficiencyWidth[lang.proficiency] ?? 'w-1/2',
+              ]}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

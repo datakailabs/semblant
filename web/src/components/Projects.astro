@@ -1,0 +1,56 @@
+---
+import type { Project } from '../lib/resume';
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+
+const statusColors: Record<string, string> = {
+  active: 'bg-emerald-500/10 text-emerald-400',
+  completed: 'bg-blue-500/10 text-blue-400',
+  archived: 'bg-zinc-500/10 text-zinc-400',
+};
+---
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {projects.map((project) => (
+      <a
+        href={project.url || undefined}
+        target={project.url ? '_blank' : undefined}
+        rel={project.url ? 'noopener noreferrer' : undefined}
+        class:list={[
+          'card group flex flex-col',
+          project.url && 'hover:border-[var(--color-accent)] cursor-pointer',
+          !project.url && 'cursor-default',
+        ]}
+      >
+        <div class="flex items-start justify-between mb-2">
+          <h3 class="font-semibold group-hover:text-[var(--color-accent)] transition-colors">
+            {project.name}
+          </h3>
+          <span class:list={[
+            'text-xs px-2 py-0.5 rounded-full font-medium capitalize',
+            statusColors[project.status] ?? statusColors.active,
+          ]}>
+            {project.status}
+          </span>
+        </div>
+
+        <p class="text-sm text-[var(--color-text-muted)] mb-4 flex-1">
+          {project.description}
+        </p>
+
+        <div class="flex flex-wrap gap-1.5">
+          {project.technologies.map((tech) => (
+            <span class="tag">{tech}</span>
+          ))}
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
