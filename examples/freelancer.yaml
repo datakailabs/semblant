@@ -204,3 +204,6 @@ projects:
 meta:
   last_updated: "2026-03-10"
   version: "0.1.0"
+
+layout:
+  accent: "#f97316"

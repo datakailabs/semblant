@@ -2,6 +2,7 @@ package pdf
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -29,4 +30,18 @@ func formatPDFDate(d string) string {
 		return months[m-1] + " " + parts[0]
 	}
 	return d
+}
+
+func parseHexColor(hex string) (Color, bool) {
+	hex = strings.TrimPrefix(hex, "#")
+	if len(hex) != 6 {
+		return Color{}, false
+	}
+	r, err1 := strconv.ParseUint(hex[0:2], 16, 8)
+	g, err2 := strconv.ParseUint(hex[2:4], 16, 8)
+	b, err3 := strconv.ParseUint(hex[4:6], 16, 8)
+	if err1 != nil || err2 != nil || err3 != nil {
+		return Color{}, false
+	}
+	return Color{uint8(r), uint8(g), uint8(b)}, true
 }

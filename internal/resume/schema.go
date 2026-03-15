@@ -9,7 +9,33 @@ type Resume struct {
 	Certifications []Certification `yaml:"certifications" json:"certifications"`
 	Languages      []Language     `yaml:"languages" json:"languages"`
 	Projects       []Project      `yaml:"projects" json:"projects"`
+	Layout         Layout         `yaml:"layout" json:"layout"`
 	Meta           Meta           `yaml:"meta" json:"meta"`
+}
+
+// Layout controls which sections render and visual theming.
+type Layout struct {
+	Sections []string `yaml:"sections" json:"sections,omitempty"`
+	Accent   string   `yaml:"accent" json:"accent,omitempty"`
+}
+
+// DefaultSections returns the default section order.
+func DefaultSections() []string {
+	return []string{"experience", "education", "languages", "skills", "certifications", "projects"}
+}
+
+// HasSection returns true if the given section is in the layout's section list.
+func (l Layout) HasSection(name string) bool {
+	sections := l.Sections
+	if len(sections) == 0 {
+		sections = DefaultSections()
+	}
+	for _, s := range sections {
+		if s == name {
+			return true
+		}
+	}
+	return false
 }
 
 type Personal struct {

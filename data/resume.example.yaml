@@ -109,3 +109,12 @@ projects:
 meta:
   last_updated: "2026-01-15"
   version: "0.1.0"
+
+# Layout customization (optional — omit for defaults)
+layout:
+  # Accent color — applied to UI chrome, links, buttons, PDF highlights
+  # accent: "#8b5cf6"
+
+  # Sections to render, in order. Omit this to show all sections.
+  # Available: experience, education, languages, skills, certifications, projects
+  # sections: [experience, skills, education]

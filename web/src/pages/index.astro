@@ -9,41 +9,81 @@ import SkillsEcosystem from '../islands/SkillsEcosystem';
 import { loadResume } from '../lib/resume';
 
 const resume = loadResume();
+const accent = resume.layout?.accent;
+const defaultSections = ['experience', 'education', 'languages', 'skills', 'certifications', 'projects'];
+const sections = resume.layout?.sections ?? defaultSections;
+const has = (s: string) => sections.includes(s);
+
+// Education and languages render side-by-side when both present
+const hasEdu = has('education');
+const hasLang = has('languages');
+const eduLangSideBySide = hasEdu && hasLang;
 ---
 
 <BaseLayout
   title={`${resume.personal.name} — ${resume.personal.title}`}
   description={resume.personal.bio}
+  accent={accent}
 >
   <div class="max-w-4xl mx-auto px-6">
     <Header personal={resume.personal} />
 
-    <!-- Experience: unified timeline + expandable details -->
-    <section class="mb-12">
-      <h2 class="section-title">Experience</h2>
-      <div class="card">
-        <ExperienceTimeline client:load experience={resume.experience} />
-      </div>
-    </section>
+    {sections.map((section) => {
+      if (section === 'experience') return (
+        <section class="mb-12">
+          <h2 class="section-title">Experience</h2>
+          <div class="card">
+            <ExperienceTimeline client:load experience={resume.experience} />
+          </div>
+        </section>
+      );
 
-    <!-- Education + Languages side by side -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-      <Education education={resume.education} />
-      <Languages languages={resume.languages} />
-    </div>
+      if (section === 'education' && !eduLangSideBySide) return (
+        <div class="mb-12">
+          <Education education={resume.education} />
+        </div>
+      );
 
-    <!-- Skills, Certifications & Projects: unified ecosystem graph -->
-    <section class="mb-12">
-      <h2 class="section-title">Skills, Certifications & Projects</h2>
-      <div class="card">
-        <SkillsEcosystem
-          client:load
-          skills={resume.skills}
-          certifications={resume.certifications}
-          projects={resume.projects}
-        />
-      </div>
-    </section>
+      if (section === 'languages' && !eduLangSideBySide) return (
+        <div class="mb-12">
+          <Languages languages={resume.languages} />
+        </div>
+      );
+
+      // Render education+languages side-by-side on whichever comes first
+      if ((section === 'education' || section === 'languages') && eduLangSideBySide) {
+        const firstEduLang = sections.find((s) => s === 'education' || s === 'languages');
+        if (section !== firstEduLang) return null;
+        return (
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <Education education={resume.education} />
+            <Languages languages={resume.languages} />
+          </div>
+        );
+      }
+
+      if (section === 'skills' || section === 'certifications' || section === 'projects') {
+        // Render ecosystem graph once, on the first of skills/certs/projects
+        const ecoSections = ['skills', 'certifications', 'projects'].filter((s) => has(s));
+        if (ecoSections[0] !== section) return null;
+        const title = ecoSections.map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join(', ');
+        return (
+          <section class="mb-12">
+            <h2 class="section-title">{title}</h2>
+            <div class="card">
+              <SkillsEcosystem
+                client:load
+                skills={has('skills') ? resume.skills : []}
+                certifications={has('certifications') ? resume.certifications : []}
+                projects={has('projects') ? resume.projects : []}
+              />
+            </div>
+          </section>
+        );
+      }
+
+      return null;
+    })}
 
     <Footer lastUpdated={resume.meta.last_updated} />
   </div>

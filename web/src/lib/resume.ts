@@ -10,7 +10,13 @@ export interface Resume {
   certifications: Certification[];
   languages: Language[];
   projects: Project[];
+  layout?: Layout;
   meta: Meta;
+}
+
+export interface Layout {
+  sections?: string[];
+  accent?: string;
 }
 
 export interface Personal {

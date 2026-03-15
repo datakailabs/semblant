@@ -30,6 +30,13 @@ func NewRenderer() *Renderer {
 
 // Render writes a complete PDF to w.
 func (r *Renderer) Render(w io.Writer, res *resume.Resume) error {
+	// Apply accent color from layout if set
+	if res.Layout.Accent != "" {
+		if c, ok := parseHexColor(res.Layout.Accent); ok {
+			r.theme.Accent = c
+		}
+	}
+
 	r.pdf.Start(gopdf.Config{PageSize: *gopdf.PageSizeA4})
 
 	if err := r.loadFonts(); err != nil {
@@ -40,12 +47,28 @@ func (r *Renderer) Render(w io.Writer, res *resume.Resume) error {
 	r.y = r.theme.MarginT
 
 	r.renderHeader(res.Personal)
-	r.renderExperience(res.Experience)
-	r.renderEducation(res.Education)
-	r.renderLanguages(res.Languages)
-	r.renderSkills(res.Skills)
-	r.renderCertifications(res.Certifications)
-	r.renderProjects(res.Projects)
+
+	sections := res.Layout.Sections
+	if len(sections) == 0 {
+		sections = resume.DefaultSections()
+	}
+
+	for _, section := range sections {
+		switch section {
+		case "experience":
+			r.renderExperience(res.Experience)
+		case "education":
+			r.renderEducation(res.Education)
+		case "languages":
+			r.renderLanguages(res.Languages)
+		case "skills":
+			r.renderSkills(res.Skills)
+		case "certifications":
+			r.renderCertifications(res.Certifications)
+		case "projects":
+			r.renderProjects(res.Projects)
+		}
+	}
 
 	r.drawPageNumber()
 

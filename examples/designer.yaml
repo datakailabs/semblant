@@ -191,3 +191,7 @@ projects:
 meta:
   last_updated: "2026-03-15"
   version: "0.1.0"
+
+layout:
+  accent: "#a855f7"
+  sections: [experience, skills, education, languages]

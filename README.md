@@ -98,7 +98,22 @@ skills:
       - name: "Python"
         level: 80
 # ... education, certifications, languages, projects
+
+layout:
+  accent: "#8b5cf6"  # custom accent color (default: teal)
+  sections:          # which sections to render, in order
+    - experience
+    - skills
+    - education
+    # omit a section to hide it, reorder to rearrange
 ```
+
+### Layout
+
+The `layout` block is optional. If omitted, all sections render in the default order with the default teal accent.
+
+- **`accent`** — hex color applied to the title, links, buttons, tags, section lines, PDF highlights, and the Download button. One value themes everything.
+- **`sections`** — ordered list of sections to render. Available: `experience`, `education`, `languages`, `skills`, `certifications`, `projects`. Omit a section to hide it. Reorder to rearrange. The skills/certifications/projects ecosystem graph adapts — if you remove `certifications`, the graph only shows skills and projects.
 
 ### Privacy
 

@@ -183,3 +183,7 @@ projects:
 meta:
   last_updated: "2026-02-20"
   version: "0.1.0"
+
+layout:
+  accent: "#3b82f6"
+  sections: [experience, education, skills, projects]

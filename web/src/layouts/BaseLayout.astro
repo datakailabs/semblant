@@ -4,9 +4,10 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  accent?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, accent } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,7 +21,7 @@ const { title, description } = Astro.props;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <!-- <meta property="og:url" content="https://your-domain.com" /> -->
+    <meta property="og:url" content="https://cv.datakai.net" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,6 +32,13 @@ const { title, description } = Astro.props;
     />
 
     <title>{title}</title>
+
+    {accent && (
+      <style set:html={`
+        :root { --color-accent: ${accent}; --color-accent-dim: ${accent}; --color-accent-subtle: ${accent}12; }
+        .dark { --color-accent: ${accent}; --color-accent-dim: ${accent}; --color-accent-subtle: ${accent}0f; }
+      `} />
+    )}
 
     <!-- Theme init (prevents flash) -->
     <script is:inline>
