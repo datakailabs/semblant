@@ -27,6 +27,25 @@ Resume-as-code. Structured YAML data, Go API server, Astro frontend with D3 visu
 <img alt="Semblant light mode" src="docs/screenshots/full-light.png" width="720">
 </details>
 
+## Examples
+
+Same engine, different careers. Each is just a YAML file — see [`examples/`](examples/) for the source.
+
+<table>
+<tr>
+<td align="center"><strong>Product Designer</strong><br><sub>5 companies · design tools & methods</sub></td>
+<td align="center"><strong>ML Researcher</strong><br><sub>PhD + DeepMind · publications as projects</sub></td>
+<td align="center"><strong>Freelance Engineer</strong><br><sub>consulting + startups · deep infra stack</sub></td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/designer-dark.png" width="280" alt="Designer example"></td>
+<td><img src="docs/screenshots/researcher-dark.png" width="280" alt="Researcher example"></td>
+<td><img src="docs/screenshots/freelancer-dark.png" width="280" alt="Freelancer example"></td>
+</tr>
+</table>
+
+> Try one: `cp examples/designer.yaml data/resume.yaml && make build && ./bin/semblant`
+
 ## Quickstart
 
 ```bash

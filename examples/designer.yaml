@@ -1,0 +1,193 @@
+personal:
+  name: "Mika Torino"
+  title: "Product Designer & Creative Director"
+  bio: "Designing interfaces that feel inevitable. 8 years shaping products from zero-to-one across fintech, health, and developer tools."
+  location: "Berlin, Germany"
+  location_visibility: public
+  website: "https://mikatorino.design"
+  links:
+    - platform: github
+      url: "https://github.com/mikatorino"
+    - platform: linkedin
+      url: "https://www.linkedin.com/in/mikatorino/"
+  contact:
+    - type: email
+      value: "mika@example.com"
+      visibility: private
+
+experience:
+  - company: "Linear"
+    url: "https://linear.app"
+    role: "Senior Product Designer"
+    start: "2024-06"
+    end: null
+    location: "Remote"
+    description: "Design systems and core product for issue tracking used by thousands of engineering teams."
+    highlights:
+      - "Redesigned the roadmap view, increasing adoption by 35% within 3 months"
+      - "Led the design system migration to support theming and white-labeling"
+    technologies:
+      - Figma
+      - React
+      - Tailwind
+      - Framer Motion
+
+  - company: "Stripe"
+    url: "https://stripe.com"
+    role: "Product Designer"
+    start: "2022-01"
+    end: "2024-05"
+    location: "Dublin, Ireland"
+    description: "Designed checkout and payment link experiences for millions of merchants."
+    highlights:
+      - "Shipped the redesigned Stripe Checkout flow, improving conversion by 12%"
+      - "Created adaptive layouts that handle 40+ payment methods across 46 countries"
+      - "Mentored 2 junior designers through Stripe's design IC growth framework"
+    technologies:
+      - Figma
+      - React
+      - Storybook
+      - A/B Testing
+
+  - company: "N26"
+    url: "https://n26.com"
+    role: "Product Designer"
+    start: "2020-03"
+    end: "2021-12"
+    location: "Berlin, Germany"
+    description: "Mobile banking app serving 8M+ customers across Europe."
+    highlights:
+      - "Redesigned the savings experience, increasing Spaces adoption by 28%"
+      - "Introduced motion design principles that became the team standard"
+    technologies:
+      - Figma
+      - Principle
+      - Swift UI
+      - Kotlin
+
+  - company: "Babbel"
+    url: "https://babbel.com"
+    role: "UX Designer"
+    start: "2018-09"
+    end: "2020-02"
+    location: "Berlin, Germany"
+    description: "Language learning platform with 10M+ subscribers."
+    highlights:
+      - "Designed the gamification layer that increased daily engagement by 22%"
+      - "Led user research across 4 markets to validate the speech recognition feature"
+    technologies:
+      - Sketch
+      - InVision
+      - UserTesting
+      - Amplitude
+
+  - company: "Freelance"
+    role: "UI/UX Designer"
+    start: "2016-06"
+    end: "2018-08"
+    location: "Milan, Italy"
+    description: "Independent design work for startups and agencies."
+    highlights:
+      - "Delivered 12+ product design projects across fintech, travel, and e-commerce"
+      - "Built a reusable component library adopted by 3 client teams"
+    technologies:
+      - Sketch
+      - Adobe XD
+      - CSS
+      - HTML
+
+education:
+  - institution: "Politecnico di Milano"
+    degree: "M.Sc. Communication Design"
+    start: "2014"
+    end: "2016"
+    location: "Milan, Italy"
+    notes: ""
+
+  - institution: "Universita di Bologna"
+    degree: "B.A. Digital Arts"
+    start: "2011"
+    end: "2014"
+    location: "Bologna, Italy"
+    notes: ""
+
+skills:
+  - category: "Design"
+    items:
+      - name: "Figma"
+        level: 95
+      - name: "Prototyping"
+        level: 90
+      - name: "Design Systems"
+        level: 85
+      - name: "User Research"
+        level: 75
+
+  - category: "Frontend"
+    items:
+      - name: "React"
+        level: 60
+      - name: "CSS"
+        level: 80
+      - name: "Tailwind"
+        level: 70
+      - name: "Framer Motion"
+        level: 65
+
+  - category: "Tools"
+    items:
+      - name: "Storybook"
+        level: 75
+      - name: "Amplitude"
+        level: 70
+      - name: "Notion"
+        level: 80
+
+  - category: "Methods"
+    items:
+      - name: "A/B Testing"
+        level: 80
+      - name: "Design Sprints"
+        level: 85
+      - name: "Jobs-to-be-Done"
+        level: 70
+
+certifications:
+  - name: "Google UX Design Professional Certificate"
+    issuer: "Google"
+    date: "2021-03"
+    credential_id: ""
+    url: "https://www.credly.com/badges/example-ux"
+    source: "manual"
+
+  - name: "Interaction Design Foundation — UX Management"
+    issuer: "IDF"
+    date: "2022-01"
+    credential_id: ""
+    url: ""
+    source: "manual"
+
+languages:
+  - name: "Italian"
+    proficiency: "native"
+  - name: "English"
+    proficiency: "fluent"
+  - name: "German"
+    proficiency: "conversational"
+
+projects:
+  - name: "Forma"
+    description: "Open-source Figma plugin for generating accessible color palettes from brand colors"
+    url: "https://github.com/mikatorino/forma"
+    technologies: ["TypeScript", "Figma API"]
+    status: "active"
+
+  - name: "Tela"
+    description: "Personal design portfolio built with Astro and View Transitions API"
+    url: "https://mikatorino.design"
+    technologies: ["Astro", "Tailwind", "View Transitions"]
+    status: "active"
+
+meta:
+  last_updated: "2026-03-15"
+  version: "0.1.0"

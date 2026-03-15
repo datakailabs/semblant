@@ -1,0 +1,206 @@
+personal:
+  name: "Carlos Mendez"
+  title: "Freelance Full-Stack Engineer & DevOps Consultant"
+  bio: "Independent engineer helping startups ship faster. Kubernetes, Go, and TypeScript. 30+ projects delivered. I build the thing and the infrastructure under it."
+  location: ""
+  location_visibility: private
+  website: "https://cmendez.dev"
+  links:
+    - platform: github
+      url: "https://github.com/carlosmendez"
+    - platform: linkedin
+      url: "https://www.linkedin.com/in/carlosmendez/"
+  contact:
+    - type: email
+      value: "carlos@cmendez.dev"
+      visibility: public
+
+experience:
+  - company: "Independent"
+    role: "Freelance Engineer & Consultant"
+    start: "2022-01"
+    end: null
+    location: ""
+    description: "Full-stack and infrastructure consulting for seed-to-Series-B startups."
+    highlights:
+      - "Shipped production systems for 12 startups across fintech, healthtech, and developer tools"
+      - "Designed and deployed Kubernetes clusters handling 50k+ RPM for 3 clients"
+      - "Built a reusable SaaS boilerplate (auth, billing, multi-tenancy) used across 5 projects"
+    technologies:
+      - Go
+      - TypeScript
+      - Kubernetes
+      - PostgreSQL
+      - AWS
+      - Terraform
+
+  - company: "Vercel"
+    url: "https://vercel.com"
+    role: "Senior Software Engineer"
+    start: "2020-06"
+    end: "2021-12"
+    location: "Remote"
+    description: "Edge runtime and deployment infrastructure."
+    highlights:
+      - "Built the initial Edge Functions runtime, serving 2B+ requests/month"
+      - "Reduced cold start times by 60% through V8 isolate pooling"
+    technologies:
+      - TypeScript
+      - Rust
+      - V8
+      - AWS
+
+  - company: "DigitalOcean"
+    url: "https://digitalocean.com"
+    role: "Software Engineer"
+    start: "2018-03"
+    end: "2020-05"
+    location: "New York, NY"
+    description: "Kubernetes-based application platform (App Platform)."
+    highlights:
+      - "Core contributor to App Platform, from prototype to GA serving 100k+ apps"
+      - "Built the build system that detects frameworks and auto-configures deployments"
+      - "On-call rotation for platform infrastructure (99.95% SLA)"
+    technologies:
+      - Go
+      - Kubernetes
+      - Docker
+      - PostgreSQL
+      - gRPC
+
+  - company: "Pivotal Labs"
+    url: "https://tanzu.vmware.com"
+    role: "Software Engineer"
+    start: "2016-07"
+    end: "2018-02"
+    location: "San Francisco, CA"
+    description: "Pair programming consultancy. Embedded with client engineering teams."
+    highlights:
+      - "Delivered 6 client engagements across healthcare, finance, and logistics"
+      - "Introduced TDD and CI/CD practices to 4 enterprise teams"
+    technologies:
+      - Java
+      - Spring Boot
+      - React
+      - Cloud Foundry
+
+  - company: "Startup Weekend"
+    role: "Lead Developer"
+    start: "2015-01"
+    end: "2016-06"
+    location: "Mexico City"
+    description: "Built MVPs at startup competitions and early-stage ventures."
+    highlights:
+      - "Won 2 Startup Weekend competitions as technical co-founder"
+      - "Built 4 MVPs that collectively raised $200k in pre-seed funding"
+    technologies:
+      - Node.js
+      - React
+      - MongoDB
+      - Heroku
+
+education:
+  - institution: "UNAM"
+    degree: "B.Sc. Computer Science"
+    start: "2011"
+    end: "2015"
+    location: "Mexico City, Mexico"
+    notes: ""
+
+skills:
+  - category: "Backend"
+    items:
+      - name: "Go"
+        level: 90
+      - name: "TypeScript"
+        level: 85
+      - name: "Rust"
+        level: 55
+      - name: "Java"
+        level: 60
+      - name: "Python"
+        level: 70
+
+  - category: "Infrastructure"
+    items:
+      - name: "Kubernetes"
+        level: 90
+      - name: "AWS"
+        level: 85
+      - name: "Terraform"
+        level: 80
+      - name: "Docker"
+        level: 90
+      - name: "CI/CD"
+        level: 85
+
+  - category: "Data"
+    items:
+      - name: "PostgreSQL"
+        level: 85
+      - name: "Redis"
+        level: 75
+      - name: "Kafka"
+        level: 60
+
+  - category: "Frontend"
+    items:
+      - name: "React"
+        level: 80
+      - name: "Next.js"
+        level: 75
+      - name: "Tailwind"
+        level: 70
+
+certifications:
+  - name: "Certified Kubernetes Administrator"
+    issuer: "CNCF"
+    date: "2023-06"
+    credential_id: ""
+    url: "https://www.credly.com/badges/example-cka"
+    source: "manual"
+
+  - name: "AWS Solutions Architect Professional"
+    issuer: "Amazon Web Services"
+    date: "2022-11"
+    credential_id: ""
+    url: "https://www.credly.com/badges/example-aws-sap"
+    source: "manual"
+
+  - name: "HashiCorp Certified Terraform Associate"
+    issuer: "HashiCorp"
+    date: "2022-04"
+    credential_id: ""
+    url: "https://www.credly.com/badges/example-terraform"
+    source: "manual"
+
+languages:
+  - name: "Spanish"
+    proficiency: "native"
+  - name: "English"
+    proficiency: "fluent"
+  - name: "Portuguese"
+    proficiency: "conversational"
+
+projects:
+  - name: "Launchkit"
+    description: "SaaS boilerplate with auth, billing, multi-tenancy, and admin dashboard — ships in a weekend"
+    url: "https://github.com/carlosmendez/launchkit"
+    technologies: ["Go", "Next.js", "PostgreSQL", "Stripe"]
+    status: "active"
+
+  - name: "Kargo"
+    description: "Lightweight Kubernetes deployment tool — GitOps without the YAML mountain"
+    url: "https://github.com/carlosmendez/kargo"
+    technologies: ["Go", "Kubernetes"]
+    status: "active"
+
+  - name: "Puntual"
+    description: "Cron monitoring service with Slack alerts and uptime dashboards"
+    url: ""
+    technologies: ["Go", "PostgreSQL", "Redis"]
+    status: "maintained"
+
+meta:
+  last_updated: "2026-03-10"
+  version: "0.1.0"

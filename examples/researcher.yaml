@@ -1,0 +1,185 @@
+personal:
+  name: "Dr. Amara Osei"
+  title: "ML Research Scientist"
+  bio: "Working at the intersection of causal inference and large language models. Published at NeurIPS, ICML, and AAAI. Building tools that make ML research reproducible."
+  location: "Zurich, Switzerland"
+  location_visibility: public
+  website: "https://aosei.ch"
+  links:
+    - platform: github
+      url: "https://github.com/amaraosei"
+    - platform: linkedin
+      url: "https://www.linkedin.com/in/amaraosei/"
+  contact:
+    - type: email
+      value: "amara@example.com"
+      visibility: private
+
+experience:
+  - company: "DeepMind"
+    url: "https://deepmind.google"
+    role: "Senior Research Scientist"
+    start: "2023-01"
+    end: null
+    location: "Zurich, Switzerland"
+    description: "Causal reasoning in large language models."
+    highlights:
+      - "Lead author on CausalLM — a framework for injecting causal structure into LLM reasoning (NeurIPS 2025 spotlight)"
+      - "Built evaluation benchmarks adopted by 3 other DeepMind teams for measuring causal understanding"
+      - "Supervised 4 research interns, 2 of whom converted to full-time"
+    technologies:
+      - Python
+      - JAX
+      - TPU
+      - PyTorch
+
+  - company: "DeepMind"
+    url: "https://deepmind.google"
+    role: "Research Scientist"
+    start: "2020-09"
+    end: "2022-12"
+    location: "London, UK"
+    description: "Representation learning and self-supervised methods."
+    highlights:
+      - "Co-authored BYOL v2 — improved self-supervised learning with 15% fewer compute hours"
+      - "Developed internal tools for experiment tracking used by 200+ researchers"
+    technologies:
+      - Python
+      - JAX
+      - TensorFlow
+
+  - company: "ETH Zurich"
+    url: "https://ethz.ch"
+    role: "Doctoral Researcher"
+    start: "2016-09"
+    end: "2020-08"
+    location: "Zurich, Switzerland"
+    description: "PhD in causal inference for observational data. Thesis: 'Structural Causal Models for Fair Decision Systems.'"
+    highlights:
+      - "Published 6 peer-reviewed papers during PhD (2 oral presentations)"
+      - "Developed CausalPy — an open-source Python library for causal discovery (1.2k GitHub stars)"
+      - "Teaching assistant for Statistical Learning Theory (3 semesters, 400+ students)"
+    technologies:
+      - Python
+      - R
+      - Stan
+      - LaTeX
+
+  - company: "Max Planck Institute"
+    url: "https://www.mpg.de"
+    role: "Research Intern"
+    start: "2016-02"
+    end: "2016-08"
+    location: "Tubingen, Germany"
+    description: "Summer research in the Causal Inference group."
+    highlights:
+      - "Implemented kernel-based independence tests for causal discovery algorithms"
+    technologies:
+      - Python
+      - MATLAB
+
+education:
+  - institution: "ETH Zurich"
+    degree: "Ph.D. Computer Science"
+    start: "2016"
+    end: "2020"
+    location: "Zurich, Switzerland"
+    notes: "Thesis: Structural Causal Models for Fair Decision Systems"
+
+  - institution: "University of Cambridge"
+    degree: "M.Phil. Machine Learning"
+    start: "2014"
+    end: "2016"
+    location: "Cambridge, UK"
+    notes: "Distinction"
+
+  - institution: "University of Ghana"
+    degree: "B.Sc. Mathematics"
+    start: "2010"
+    end: "2014"
+    location: "Accra, Ghana"
+    notes: "First Class Honours"
+
+skills:
+  - category: "ML/AI"
+    items:
+      - name: "PyTorch"
+        level: 90
+      - name: "JAX"
+        level: 85
+      - name: "TensorFlow"
+        level: 70
+      - name: "Causal Inference"
+        level: 95
+
+  - category: "Languages"
+    items:
+      - name: "Python"
+        level: 95
+      - name: "R"
+        level: 70
+      - name: "C++"
+        level: 50
+
+  - category: "Research"
+    items:
+      - name: "Experiment Design"
+        level: 90
+      - name: "Statistical Testing"
+        level: 85
+      - name: "Technical Writing"
+        level: 90
+      - name: "Peer Review"
+        level: 80
+
+  - category: "Infrastructure"
+    items:
+      - name: "TPU"
+        level: 75
+      - name: "Docker"
+        level: 65
+      - name: "Weights & Biases"
+        level: 80
+      - name: "Git"
+        level: 85
+
+certifications: []
+
+languages:
+  - name: "English"
+    proficiency: "native"
+  - name: "Twi"
+    proficiency: "native"
+  - name: "French"
+    proficiency: "conversational"
+  - name: "German"
+    proficiency: "basic"
+
+projects:
+  - name: "CausalPy"
+    description: "Open-source library for causal discovery and inference from observational data"
+    url: "https://github.com/amaraosei/causalpy"
+    technologies: ["Python", "NumPy", "NetworkX"]
+    status: "active"
+
+  - name: "CausalBench"
+    description: "Benchmark suite for evaluating causal reasoning in large language models"
+    url: "https://github.com/amaraosei/causalbench"
+    technologies: ["Python", "JAX", "HuggingFace"]
+    status: "active"
+
+  - name: "FairCause"
+    description: "Toolkit for auditing algorithmic fairness through the lens of causal models"
+    url: ""
+    technologies: ["Python", "R"]
+    status: "maintained"
+
+  - name: "PhD Thesis"
+    description: "Structural Causal Models for Fair Decision Systems — ETH Zurich, 2020"
+    url: "https://doi.org/10.3929/ethz-example"
+    technologies: ["LaTeX", "Python", "R"]
+    status: "completed"
+
+meta:
+  last_updated: "2026-02-20"
+  version: "0.1.0"
