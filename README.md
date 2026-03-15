@@ -2,6 +2,31 @@
 
 Resume-as-code. Structured YAML data, Go API server, Astro frontend with D3 visualizations, and PDF export — in a single binary.
 
+<p align="center">
+  <a href="https://semblant.ai">Website</a> · <a href="https://cv.datakai.net">Live Demo</a> · <a href="#quickstart">Quickstart</a>
+</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/full-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/screenshots/full-light.png">
+    <img alt="Semblant — resume website with comet timeline and skills ecosystem graph" src="docs/screenshots/full-dark.png" width="720">
+  </picture>
+</p>
+
+## What you get
+
+- **Website** — responsive Astro site with dark/light mode, driven entirely by your YAML
+- **PDF** — hyperlinked, multi-page PDF generated server-side (no browser, no Puppeteer)
+- **API** — JSON endpoint for your resume data with privacy filtering
+- **Comet Timeline** — D3 interactive experience visualization with company grouping, promotions, and recency fading
+- **Skills Ecosystem** — radial network graph connecting skills, certifications, and projects
+
+<details>
+<summary>Light mode</summary>
+<img alt="Semblant light mode" src="docs/screenshots/full-light.png" width="720">
+</details>
+
 ## Quickstart
 
 ```bash
@@ -17,13 +42,6 @@ make build
 ./bin/semblant
 # → http://localhost:5173
 ```
-
-## What you get
-
-- **Website** — responsive Astro site with dark mode, driven entirely by your YAML
-- **PDF** — hyperlinked, multi-page PDF generated server-side (no browser, no Puppeteer)
-- **API** — JSON endpoint for your resume data with privacy filtering
-- **Visualizations** — D3 interactive timeline and skills ecosystem graph
 
 ## Resume schema
 
@@ -52,7 +70,15 @@ experience:
     highlights:
       - "Reduced p99 latency by 40%"
     technologies: [Go, PostgreSQL, Kubernetes]
-# ... education, skills, certifications, languages, projects
+
+skills:
+  - category: "Languages"
+    items:
+      - name: "Go"
+        level: 85  # 0-100, drives node size in ecosystem graph
+      - name: "Python"
+        level: 80
+# ... education, certifications, languages, projects
 ```
 
 ### Privacy
