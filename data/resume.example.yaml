@@ -115,6 +115,10 @@ layout:
   # Accent color — applied to UI chrome, links, buttons, PDF highlights
   # accent: "#8b5cf6"
 
+  # Visualization style for experience and skills sections
+  # experience: timeline    # timeline (interactive D3) | list (static cards, zero JS)
+  # skills: ecosystem       # ecosystem (interactive D3 radial graph) | grid (level bars, zero JS)
+
   # Sections to render, in order. Omit this to show all sections.
   # Available: experience, education, languages, skills, certifications, projects
   # sections: [experience, skills, education]

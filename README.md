@@ -100,8 +100,10 @@ skills:
 # ... education, certifications, languages, projects
 
 layout:
-  accent: "#8b5cf6"  # custom accent color (default: teal)
-  sections:          # which sections to render, in order
+  accent: "#8b5cf6"        # custom accent color (default: teal)
+  experience: list          # timeline | list
+  skills: grid              # ecosystem | grid
+  sections:                 # which sections to render, in order
     - experience
     - skills
     - education
@@ -113,7 +115,14 @@ layout:
 The `layout` block is optional. If omitted, all sections render in the default order with the default teal accent.
 
 - **`accent`** — hex color applied to the title, links, buttons, tags, section lines, PDF highlights, and the Download button. One value themes everything.
-- **`sections`** — ordered list of sections to render. Available: `experience`, `education`, `languages`, `skills`, `certifications`, `projects`. Omit a section to hide it. Reorder to rearrange. The skills/certifications/projects ecosystem graph adapts — if you remove `certifications`, the graph only shows skills and projects.
+- **`sections`** — ordered list of sections to render. Available: `experience`, `education`, `languages`, `skills`, `certifications`, `projects`. Omit a section to hide it. Reorder to rearrange.
+- **`experience`** — `timeline` (default) or `list`. Timeline is the interactive D3 comet visualization. List is a clean static card layout grouped by company with promotion indicators — zero JavaScript.
+- **`skills`** — `ecosystem` (default) or `grid`. Ecosystem is the interactive D3 radial graph connecting skills, certs, and projects. Grid is a two-column layout with level bars — zero JavaScript.
+
+<details>
+<summary>List + Grid view</summary>
+<img alt="Semblant list and grid view" src="docs/screenshots/list-grid-dark.png" width="720">
+</details>
 
 ### Privacy
 

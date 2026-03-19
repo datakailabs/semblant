@@ -1,0 +1,97 @@
+---
+import type { Experience } from '../lib/resume';
+import { companyColors } from '../lib/constants';
+import { formatDate } from '../lib/dates';
+
+interface Props {
+  experience: Experience[];
+}
+
+const { experience } = Astro.props;
+
+// Group consecutive roles at the same company
+interface CompanyGroup {
+  company: string;
+  color: string;
+  roles: Experience[];
+}
+
+const groups: CompanyGroup[] = [];
+for (const exp of experience) {
+  const last = groups[groups.length - 1];
+  if (last && last.company === exp.company) {
+    last.roles.push(exp);
+  } else {
+    groups.push({
+      company: exp.company,
+      color: companyColors[exp.company] ?? 'var(--color-accent)',
+      roles: [exp],
+    });
+  }
+}
+---
+
+<div class="space-y-6">
+  {groups.map((group) => (
+    <div class="card" style={`border-left: 3px solid ${group.color}`}>
+      <div class="pl-4">
+        <h3 class="text-lg font-semibold mb-4" style={`color: ${group.color}`}>
+          {group.company}
+        </h3>
+
+        <div class="space-y-5">
+          {group.roles.map((role, i) => (
+            <div>
+              {i > 0 && (
+                <div class="flex items-center gap-1.5 mb-2 text-xs font-medium" style={`color: ${group.color}`}>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg>
+                  Promoted
+                </div>
+              )}
+
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                <h4 class="font-medium">{role.role}</h4>
+                <span class="text-sm text-[var(--color-text-muted)] font-mono whitespace-nowrap">
+                  {formatDate(role.start)} — {formatDate(role.end)}
+                </span>
+              </div>
+
+              {role.location && (
+                <p class="text-sm text-[var(--color-text-muted)] mb-1">{role.location}</p>
+              )}
+
+              {role.description && (
+                <p class="text-sm text-[var(--color-text-muted)] mb-2">{role.description}</p>
+              )}
+
+              {role.highlights.length > 0 && (
+                <ul class="space-y-1.5 mb-3">
+                  {role.highlights.map((h) => (
+                    <li class="text-sm flex gap-2">
+                      <span class="mt-0.5 shrink-0" style={`color: ${group.color}`}>▸</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {role.technologies.length > 0 && (
+                <div class="flex flex-wrap gap-1.5">
+                  {role.technologies.map((tech) => (
+                    <span class="tag">{tech}</span>
+                  ))}
+                </div>
+              )}
+
+              {i < group.roles.length - 1 && (
+                <div class="border-b border-[var(--color-border)] mt-4" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

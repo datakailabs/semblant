@@ -195,3 +195,5 @@ meta:
 layout:
   accent: "#a855f7"
   sections: [experience, skills, education, languages]
+  experience: list
+  skills: grid

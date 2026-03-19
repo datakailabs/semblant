@@ -1,0 +1,110 @@
+---
+import type { SkillGroup, Certification, Project } from '../lib/resume';
+import { categoryColors } from '../lib/constants';
+
+interface Props {
+  skills: SkillGroup[];
+  certifications: Certification[];
+  projects: Project[];
+}
+
+const { skills, certifications, projects } = Astro.props;
+---
+
+<div class="space-y-8">
+  {/* Skills by category */}
+  {skills.length > 0 && (
+    <div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {skills.map((group) => {
+          const color = categoryColors[group.category] ?? 'var(--color-accent)';
+          return (
+            <div>
+              <h4 class="text-xs font-semibold uppercase tracking-wider mb-3" style={`color: ${color}`}>
+                {group.category}
+              </h4>
+              <div class="space-y-2.5">
+                {group.items.map((skill) => (
+                  <div>
+                    <div class="flex justify-between mb-1">
+                      <span class="text-sm">{skill.name}</span>
+                      <span class="text-xs font-mono text-[var(--color-text-muted)]">{skill.level}%</span>
+                    </div>
+                    <div class="h-1.5 bg-[var(--color-border)] rounded-full overflow-hidden">
+                      <div
+                        class="h-full rounded-full"
+                        style={`width: ${skill.level}%; background-color: ${color}`}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  )}
+
+  {/* Certifications */}
+  {certifications.length > 0 && (
+    <div>
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)] mb-3">
+        Certifications
+      </h4>
+      <div class="space-y-2">
+        {certifications.map((cert) => (
+          <div class="flex items-baseline justify-between gap-4">
+            {cert.url ? (
+              <a href={cert.url} target="_blank" rel="noopener noreferrer"
+                 class="text-sm accent-text hover:opacity-80 transition-opacity">
+                {cert.name}
+              </a>
+            ) : (
+              <span class="text-sm">{cert.name}</span>
+            )}
+            <span class="text-xs text-[var(--color-text-muted)] whitespace-nowrap">{cert.issuer}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* Projects */}
+  {projects.length > 0 && (
+    <div>
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)] mb-3">
+        Projects
+      </h4>
+      <div class="space-y-3">
+        {projects.map((proj) => (
+          <div>
+            <div class="flex items-baseline justify-between gap-4">
+              {proj.url ? (
+                <a href={proj.url} target="_blank" rel="noopener noreferrer"
+                   class="text-sm font-medium accent-text hover:opacity-80 transition-opacity">
+                  {proj.name}
+                </a>
+              ) : (
+                <span class="text-sm font-medium">{proj.name}</span>
+              )}
+              {proj.status && (
+                <span class="text-xs text-[var(--color-text-muted)] capitalize">{proj.status}</span>
+              )}
+            </div>
+            {proj.description && (
+              <p class="text-sm text-[var(--color-text-muted)] mt-0.5">{proj.description}</p>
+            )}
+            {proj.technologies.length > 0 && (
+              <div class="flex flex-wrap gap-1.5 mt-1.5">
+                {proj.technologies.map((tech) => (
+                  <span class="tag">{tech}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</div>

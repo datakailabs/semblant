@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Education from '../components/Education.astro';
 import Languages from '../components/Languages.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
 import Footer from '../components/Footer.astro';
 import ExperienceTimeline from '../islands/ExperienceTimeline';
 import SkillsEcosystem from '../islands/SkillsEcosystem';
@@ -10,6 +12,8 @@ import { loadResume } from '../lib/resume';
 
 const resume = loadResume();
 const accent = resume.layout?.accent;
+const expStyle = resume.layout?.experience ?? 'timeline';
+const skillsStyle = resume.layout?.skills ?? 'ecosystem';
 const defaultSections = ['experience', 'education', 'languages', 'skills', 'certifications', 'projects'];
 const sections = resume.layout?.sections ?? defaultSections;
 const has = (s: string) => sections.includes(s);
@@ -32,9 +36,13 @@ const eduLangSideBySide = hasEdu && hasLang;
       if (section === 'experience') return (
         <section class="mb-12">
           <h2 class="section-title">Experience</h2>
-          <div class="card">
-            <ExperienceTimeline client:load experience={resume.experience} />
-          </div>
+          {expStyle === 'list' ? (
+            <ExperienceList experience={resume.experience} />
+          ) : (
+            <div class="card">
+              <ExperienceTimeline client:load experience={resume.experience} />
+            </div>
+          )}
         </section>
       );
 
@@ -63,21 +71,30 @@ const eduLangSideBySide = hasEdu && hasLang;
       }
 
       if (section === 'skills' || section === 'certifications' || section === 'projects') {
-        // Render ecosystem graph once, on the first of skills/certs/projects
+        // Render once, on the first of skills/certs/projects
         const ecoSections = ['skills', 'certifications', 'projects'].filter((s) => has(s));
         if (ecoSections[0] !== section) return null;
         const title = ecoSections.map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join(', ');
+        const filteredSkills = has('skills') ? resume.skills : [];
+        const filteredCerts = has('certifications') ? resume.certifications : [];
+        const filteredProjects = has('projects') ? resume.projects : [];
         return (
           <section class="mb-12">
             <h2 class="section-title">{title}</h2>
-            <div class="card">
-              <SkillsEcosystem
-                client:load
-                skills={has('skills') ? resume.skills : []}
-                certifications={has('certifications') ? resume.certifications : []}
-                projects={has('projects') ? resume.projects : []}
-              />
-            </div>
+            {skillsStyle === 'grid' ? (
+              <div class="card">
+                <SkillsGrid skills={filteredSkills} certifications={filteredCerts} projects={filteredProjects} />
+              </div>
+            ) : (
+              <div class="card">
+                <SkillsEcosystem
+                  client:load
+                  skills={filteredSkills}
+                  certifications={filteredCerts}
+                  projects={filteredProjects}
+                />
+              </div>
+            )}
           </section>
         );
       }

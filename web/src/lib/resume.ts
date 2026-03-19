@@ -17,6 +17,8 @@ export interface Resume {
 export interface Layout {
   sections?: string[];
   accent?: string;
+  experience?: 'timeline' | 'list';
+  skills?: 'ecosystem' | 'grid';
 }
 
 export interface Personal {

@@ -13,10 +13,12 @@ type Resume struct {
 	Meta           Meta           `yaml:"meta" json:"meta"`
 }
 
-// Layout controls which sections render and visual theming.
+// Layout controls which sections render, visual theming, and visualization style.
 type Layout struct {
-	Sections []string `yaml:"sections" json:"sections,omitempty"`
-	Accent   string   `yaml:"accent" json:"accent,omitempty"`
+	Sections        []string `yaml:"sections" json:"sections,omitempty"`
+	Accent          string   `yaml:"accent" json:"accent,omitempty"`
+	ExperienceStyle string   `yaml:"experience" json:"experience,omitempty"`
+	SkillsStyle     string   `yaml:"skills" json:"skills,omitempty"`
 }
 
 // DefaultSections returns the default section order.
