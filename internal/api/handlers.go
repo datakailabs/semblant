@@ -50,3 +50,33 @@ func (s *Server) handlePDF(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
+
+func (s *Server) handleChat(w http.ResponseWriter, r *http.Request) {
+	if s.chat == nil {
+		http.Error(w, `{"error":"chat not configured"}`, http.StatusServiceUnavailable)
+		return
+	}
+
+	var req struct {
+		Message string `json:"message"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || req.Message == "" {
+		http.Error(w, `{"error":"message is required"}`, http.StatusBadRequest)
+		return
+	}
+
+	if len(req.Message) > 500 {
+		http.Error(w, `{"error":"message too long (max 500 chars)"}`, http.StatusBadRequest)
+		return
+	}
+
+	answer, err := s.chat.Ask(req.Message)
+	if err != nil {
+		log.Printf("Chat failed: %v", err)
+		http.Error(w, `{"error":"failed to generate response"}`, http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{"answer": answer})
+}

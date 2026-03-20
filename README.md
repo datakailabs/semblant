@@ -139,6 +139,8 @@ All configuration via environment variables:
 | `SEMBLANT_WEB_DIR` | `web/dist` | Path to built frontend |
 | `SEMBLANT_PDF_AUTH_SECRET` | *(empty)* | Bearer token for PDF endpoint. If empty, PDF returns 401 |
 | `SEMBLANT_CORS_ORIGINS` | `*` | Comma-separated allowed origins. Set to your domain in production |
+| `ANTHROPIC_API_KEY` | *(empty)* | Anthropic API key. Enables `/api/chat` when set |
+| `ANTHROPIC_MODEL` | `claude-sonnet-4-20250514` | Claude model for chat responses |
 
 ## API
 
@@ -148,6 +150,23 @@ All configuration via environment variables:
 | `GET /api/resume` | No | Public resume JSON (private fields stripped) |
 | `GET /api/resume?full=true` | Bearer | Full resume including private fields |
 | `GET /api/resume/pdf` | Bearer | Download PDF |
+| `POST /api/chat` | No | Chat with the resume (requires `ANTHROPIC_API_KEY` + `layout.chat: true`) |
+
+### Chat
+
+Enable conversational access to the resume — visitors can ask questions and get grounded answers powered by Claude.
+
+```yaml
+# resume.yaml
+layout:
+  chat: true
+```
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+The chat widget appears as a floating button in the bottom-right. Suggested questions on first open, 500 char input limit, 10 req/min rate limit per IP. Answers are grounded in the resume data only — the LLM is instructed to say "I don't know" for anything not in the resume.
 
 ## Development
 

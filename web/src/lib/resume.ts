@@ -19,6 +19,7 @@ export interface Layout {
   accent?: string;
   experience?: 'timeline' | 'list';
   skills?: 'ecosystem' | 'grid';
+  chat?: boolean;
 }
 
 export interface Personal {

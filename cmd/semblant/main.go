@@ -22,7 +22,7 @@ func main() {
 	log.Printf("Loaded resume for %s (%d experience entries, %d skill groups)",
 		r.Personal.Name, len(r.Experience), len(r.Skills))
 
-	srv := api.NewServer(r, cfg.PDFSecret, cfg.CORSOrigins, cfg.WebDir)
+	srv := api.NewServer(r, cfg.PDFSecret, cfg.CORSOrigins, cfg.WebDir, cfg.AnthropicKey, cfg.AnthropicModel)
 
 	addr := fmt.Sprintf(":%s", cfg.Port)
 	log.Printf("Semblant listening on %s", addr)

@@ -19,6 +19,7 @@ type Layout struct {
 	Accent          string   `yaml:"accent" json:"accent,omitempty"`
 	ExperienceStyle string   `yaml:"experience" json:"experience,omitempty"`
 	SkillsStyle     string   `yaml:"skills" json:"skills,omitempty"`
+	Chat            bool     `yaml:"chat" json:"chat,omitempty"`
 }
 
 // DefaultSections returns the default section order.

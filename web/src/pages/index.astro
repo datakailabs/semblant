@@ -8,6 +8,7 @@ import SkillsGrid from '../components/SkillsGrid.astro';
 import Footer from '../components/Footer.astro';
 import ExperienceTimeline from '../islands/ExperienceTimeline';
 import SkillsEcosystem from '../islands/SkillsEcosystem';
+import ChatWidget from '../islands/ChatWidget';
 import { loadResume } from '../lib/resume';
 
 const resume = loadResume();
@@ -104,4 +105,8 @@ const eduLangSideBySide = hasEdu && hasLang;
 
     <Footer lastUpdated={resume.meta.last_updated} />
   </div>
+
+  {resume.layout?.chat && (
+    <ChatWidget client:load name={resume.personal.name} />
+  )}
 </BaseLayout>
