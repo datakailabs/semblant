@@ -39,7 +39,7 @@ Same engine, different careers. Each is just a YAML file — see [`examples/`](e
 </tr>
 <tr>
 <td><img src="docs/screenshots/designer-dark.png" width="280" alt="Designer example"></td>
-<td><img src="docs/screenshots/researcher-dark.png" width="280" alt="Researcher example"></td>
+<td><img src="docs/screenshots/researcher-light.png" width="280" alt="Researcher example"></td>
 <td><img src="docs/screenshots/freelancer-dark.png" width="280" alt="Freelancer example"></td>
 </tr>
 </table>
